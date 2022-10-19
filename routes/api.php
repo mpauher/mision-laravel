@@ -46,6 +46,7 @@ Route::group([
         'middleware' => ['auth:api', 'role:admin'],
     ],function(){
         Route::post('/', [MovieController::class, 'create']);
+        Route::get('/search', [MovieController::class, 'searchByName']);
         Route::get('/{id}', [MovieController::class, 'show']);
         Route::get('/', [MovieController::class, 'index']);
         Route::put('/{id}', [MovieController::class, 'update']);
