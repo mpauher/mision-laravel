@@ -47,6 +47,7 @@ Route::group([
     ],function(){
         Route::post('/', [MovieController::class, 'create']);
         Route::get('/search', [MovieController::class, 'searchByName']);
+        Route::get('/filter', [MovieController::class, 'filterByCategory']);
         Route::get('/{id}', [MovieController::class, 'show']);
         Route::get('/', [MovieController::class, 'index']);
         Route::put('/{id}', [MovieController::class, 'update']);
@@ -59,5 +60,7 @@ Route::group([
     ],function(){
         Route::get('/{id}', [MovieController::class, 'show']);
         Route::get('/', [MovieController::class, 'index']);
+        Route::get('/search', [MovieController::class, 'searchByName']);
+        Route::get('/filter', [MovieController::class, 'filterByCategory']);
     });
 });

@@ -86,6 +86,25 @@ class MovieController extends Controller
         }  
     }
 
+    public function filterByCategory(Request $request){
+        try{
+            $request->validate([
+                'category' => 'required|string'
+            ]);
+    
+            $movies = Movie::where('category',$request->category)->get();
+    
+            return response()->json([
+                'movies' => $movies
+            ],200);  
+
+        } catch ( \Exception $e){
+            return response()->json([
+                'error' => $e->getMessage()
+            ],400);
+        }  
+    }
+
     public function update($id, Request $request){
         try{
             $movie = Movie::find($id);
